@@ -27,7 +27,7 @@ exports.index = function(req, res) {
     options.where = {UserId: req.user.id}
   }
 */  
-  models.Quiz.findAll(options).then(
+  models.Quiz.findAll().then(
     function(quizes) {
       res.render('quizes/index.ejs', {quizes: quizes, errors: []});
     }
@@ -62,9 +62,8 @@ exports.create = function(req, res) {
     var quiz = models.Quiz.build(req.body.quiz);
 	
 	// guarda en DB los campos pregunta y respuesta de quiz
-	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
-		res.redirect('/quizes');
-	})	// REdirección HTTP (URL relativo) lista de preguntas
+        quiz.save( {fields: ["pregunta", "respuesta"]})
+        .then( function(){ res.redirect('/quizes');});	// REdirección HTTP (URL relativo) lista de preguntas
 	/*
     quiz.validate()
         .then(function(err) {
