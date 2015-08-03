@@ -40,6 +40,41 @@ exports.answer = function(req, res){
 	res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado});
 };
 
+
+exports.new = function(req, res, next) {
+    var quiz = models.Quiz.build({
+        pregunta: "Pregunta",
+        respuesta: "Respuesta"
+    });
+    res.render('quizes/new', {quiz: quiz});
+}
+
+exports.create = function(req, res) {
+    var quiz = models.Quiz.build(req.body.quiz);
+	
+	// guarda en DB los campos pregunta y respuesta de quiz
+	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
+		res.redirect('/quizes');
+	})	// REdirección HTTP (URL relativo) lista de preguntas
+	/*
+    quiz.validate()
+        .then(function(err) {
+            if (err) {
+                console.log(err);
+                res.render('/quizes/new', {quiz: quiz, errors: err.errors});
+            }
+            else {
+                quiz
+                    .save({fields: ["pregunta", "respuesta", "tema"]})
+                    .then(function(){
+                        res.redirect('/quizes');
+                    })
+                ;    
+            }
+        })
+    ; */
+};
+
 // GET /author	
 exports.author = function(req, res) {
 	res.render('author');
