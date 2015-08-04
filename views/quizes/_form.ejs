@@ -2,14 +2,12 @@
 <input type="text" id="preg" name="quiz[pregunta]" value="<%=quiz.pregunta%>" onclick="this.value = '';" />
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%=quiz.respuesta%>" onclick="this.value = '';" />
-<!--
 <select name="quiz[tema]">
   <option value="otro" <%= (quiz.tema === 'otro') ? 'selected' : ''%>>Otro</option>
   <option value="humanidades" <%= (quiz.tema === 'humanidades') ? 'selected' : ''%>>Humanidades</option>
   <option value="ocio" <%= (quiz.tema === 'ocio') ? 'selected' : ''%>>Ocio</option>
   <option value="ciencia" <%= (quiz.tema === 'ciencia') ? 'selected' : ''%>>Ciencia</option>
-  <option value="tecnologia" <%= (quiz.tema === 'tecnologia') ? 'selected' : ''%>>Tecnología</option>
+  <option value="tecnologia" <%= (quiz.tema === 'tecnologia') ? 'selected' : ''%>>Tecnolog&iacute;a</option>
 </select>
--->
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <button type="submit" value="Salvar">Salvar</button>
